@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite"  parallel="tests" verbose="1">
+	<test name="Ui test firefox">
+		
+		<method-selectors>
+     		<method-selector>
+       			<script language="beanshell"><![CDATA[
+         			groups.containsKey(System.getProperty("testSuite"))
+       			]]></script>
+     		</method-selector>
+   		</method-selectors>
+   		<parameter name="browser" value="firefox"/>
+		<classes>
+				<class name="com.poc.ui.test.AngularAppTests" />
+		</classes>
+	</test> <!-- Test -->
+	<test name="Ui test Chrome">
+		
+		<method-selectors>
+     		<method-selector>
+       			<script language="beanshell"><![CDATA[
+         			groups.containsKey(System.getProperty("testSuite"))
+       			]]></script>
+     		</method-selector>
+   		</method-selectors>
+   		<parameter name="browser" value="chrome"/>
+		<classes>
+				<class name="com.poc.ui.test.AngularAppTests" />
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->
