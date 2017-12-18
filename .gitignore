@@ -3,5 +3,4 @@
 /allure-results/
 /allure-report/
 /.settings/
-*.project
 *.classpath
