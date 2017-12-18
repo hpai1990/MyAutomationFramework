@@ -88,7 +88,7 @@
            		    </systemPropertyVariables>
 					<outputName>Automation Report</outputName>
 					<suiteXmlFiles>
-						<suiteXmlFile>src/test/resources/suites/testng.xml</suiteXmlFile>
+						<suiteXmlFile>src/test/resources/suites/testngparallel.xml</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 				<dependencies>

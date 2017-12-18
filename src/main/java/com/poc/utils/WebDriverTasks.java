@@ -15,11 +15,14 @@
 package com.poc.utils;
 
 import io.qameta.allure.Step;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
 //import org.jsoup.Jsoup;
 //import org.jsoup.nodes.Document;
 import org.openqa.selenium.JavascriptExecutor;
@@ -30,6 +33,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 //This class provides methods with logging for different object actions like click,send text etc
@@ -45,28 +50,37 @@ public class WebDriverTasks {
 	
 	
 	@Step("Clicking on Web Element")
-	public static synchronized void clickObject(WebElement obj){
-		/*try{
-			obj.click();
+	public static synchronized void clickObject(String object_locator){
+		try{
+			WebDriverWait wait = new WebDriverWait(WebDriverTasks.getWebdriverSession(),10);
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(object_locator)));
+			WebDriverTasks.getWebdriverSession().findElement(By.xpath(object_locator)).click();
 		}
-		catch(org.openqa.selenium.StaleElementReferenceException ex){*/
+		catch(org.openqa.selenium.StaleElementReferenceException ex){
 			//wait.until(angularHasFinishedProcessing());
-			obj.click();
-		//}
+			WebDriverWait wait = new WebDriverWait(WebDriverTasks.getWebdriverSession(),10);
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(object_locator)));
+			WebDriverTasks.getWebdriverSession().findElement(By.xpath(object_locator)).click();
+		
+		}
 		
 		
 	}
 	
 	@Step("Sending Text in a Web Element")
-	public static synchronized void sendTextWithObject(WebElement obj,String webtext){
-		/*
+	public static synchronized void sendTextWithObject(String object_locator,String webtext){
+		
 		try{
-			obj.sendKeys(webtext);
+			WebDriverWait wait = new WebDriverWait(WebDriverTasks.getWebdriverSession(),10);
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(object_locator)));
+			WebDriverTasks.getWebdriverSession().findElement(By.xpath(object_locator)).sendKeys(webtext);
 		}
-		catch(org.openqa.selenium.StaleElementReferenceException ex){*/
+		catch(org.openqa.selenium.StaleElementReferenceException ex){
 			//wait.until(angularHasFinishedProcessing());
-			obj.sendKeys(webtext);
-		//}
+			WebDriverWait wait = new WebDriverWait(WebDriverTasks.getWebdriverSession(),10);
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(object_locator)));
+			WebDriverTasks.getWebdriverSession().findElement(By.xpath(object_locator)).sendKeys(webtext);
+		}
 		
 	}
 	
@@ -77,8 +91,10 @@ public class WebDriverTasks {
 	}
 	
 	@Step("Get Text from the WebElement")
-	public static synchronized void getTextOfObject(WebElement obj) {
-		obj.getText();
+	public static synchronized void getTextOfObject(String object_locator) {
+		WebDriverWait wait = new WebDriverWait(WebDriverTasks.getWebdriverSession(),10);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(object_locator)));
+		WebDriverTasks.getWebdriverSession().findElement(By.xpath(object_locator)).getText();
 	}
 	
 	public static synchronized void actionClassClick(WebElement obj){

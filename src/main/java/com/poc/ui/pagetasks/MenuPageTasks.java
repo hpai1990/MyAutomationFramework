@@ -2,10 +2,6 @@ package com.poc.ui.pagetasks;
 
 import io.qameta.allure.Step;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import com.poc.ui.pageobjects.MenuPageObjects;
 import com.poc.utils.CustomDataLogger;
 import com.poc.utils.WebDriverTasks;
@@ -17,36 +13,36 @@ public class MenuPageTasks {
 	
 	@Step(value="Clicking on Menu")
 	public static synchronized void clickMenuPage(){
-		WebDriverWait wait = new WebDriverWait(WebDriverTasks.getWebdriverSession(),10);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(MenuPageObjects.MenuList_locator)));
-		WebDriverTasks.clickObject(MenuPageObjects.getMenuList());
+		//WebDriverWait wait = new WebDriverWait(WebDriverTasks.getWebdriverSession(),10);
+		//wait.until(ExpectedConditions.elementToBeClickable(By.xpath(MenuPageObjects.MenuList_locator)));
+		WebDriverTasks.clickObject(MenuPageObjects.MenuList_locator);
 		CustomDataLogger.saveScreenshotPNG(WebDriverTasks.getWebdriverSession());
 	}
 	
 	@Step(value="Clicking on Item")
 	public static synchronized void ClickItem(String menuItem){
-		WebDriverWait wait = new WebDriverWait(WebDriverTasks.getWebdriverSession(),10);
+		//WebDriverWait wait = new WebDriverWait(WebDriverTasks.getWebdriverSession(),10);
 		
 		switch(menuItem) {
 		
 		case "VADONUT":
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(MenuPageObjects.Vadonaut_locator)));
-			WebDriverTasks.clickObject(MenuPageObjects.getVodunutLink());
+			//wait.until(ExpectedConditions.elementToBeClickable(By.xpath(MenuPageObjects.Vadonaut_locator)));
+			WebDriverTasks.clickObject(MenuPageObjects.Vadonaut_locator);
 			break;
 
 		case "UTHAPPIZZA":
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(MenuPageObjects.UTHAPPIZZA_locator)));
-			WebDriverTasks.clickObject(MenuPageObjects.getUthappizzaLink());
+			//wait.until(ExpectedConditions.elementToBeClickable(By.xpath(MenuPageObjects.UTHAPPIZZA_locator)));
+			WebDriverTasks.clickObject(MenuPageObjects.UTHAPPIZZA_locator);
 			break;
 
 		case "ZUCCHIPAKODA":
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(MenuPageObjects.ZUCCHIPAKODA_locator)));
-			WebDriverTasks.clickObject(MenuPageObjects.getZucchipakodaLink());
+			//wait.until(ExpectedConditions.elementToBeClickable(By.xpath(MenuPageObjects.ZUCCHIPAKODA_locator)));
+			WebDriverTasks.clickObject(MenuPageObjects.ZUCCHIPAKODA_locator);
 			break;
 
 		case "ELAICHEESE_CAKE":
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(MenuPageObjects.ELAICHEESE_CAKE_locator)));
-			WebDriverTasks.clickObject(MenuPageObjects.getElaicheeseLink());
+			//wait.until(ExpectedConditions.elementToBeClickable(By.xpath(MenuPageObjects.ELAICHEESE_CAKE_locator)));
+			WebDriverTasks.clickObject(MenuPageObjects.ELAICHEESE_CAKE_locator);
 			break;
 		}
 		
@@ -54,9 +50,9 @@ public class MenuPageTasks {
 	}
 
 	public static synchronized void GetStarCount(){
-		WebDriverWait wait = new WebDriverWait(WebDriverTasks.getWebdriverSession(),10);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(MenuPageObjects.StarCount_locator)));
-		WebDriverTasks.getTextOfObject(MenuPageObjects.getStarCount());
+		//WebDriverWait wait = new WebDriverWait(WebDriverTasks.getWebdriverSession(),10);
+		//wait.until(ExpectedConditions.elementToBeClickable(By.xpath(MenuPageObjects.StarCount_locator)));
+		WebDriverTasks.getTextOfObject(MenuPageObjects.StarCount_locator);
 	}
 
 	public static  void GetNoOfStars(String menuItem){
@@ -74,7 +70,7 @@ public class MenuPageTasks {
 		GetStarCount();
 		//wait.until(ExpectedConditions.elementToBeClickable(JobListingPageObjects.getUpdateLink()));
 		//WebDriverTasks.waitForElementToBeClickable(JobListingPageObjects.getUpdateLink());
-		WebDriverTasks.clickObject(MenuPageObjects.getBackButton());
+		WebDriverTasks.clickObject(MenuPageObjects.BackButton_locator);
 
 	}
 }

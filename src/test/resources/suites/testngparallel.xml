@@ -3,28 +3,26 @@
 <suite name="Suite"  parallel="tests" verbose="1">
 	<test name="Ui test firefox">
 		
-		<method-selectors>
-     		<method-selector>
-       			<script language="beanshell"><![CDATA[
-         			groups.containsKey(System.getProperty("testSuite"))
-       			]]></script>
-     		</method-selector>
-   		</method-selectors>
+		
    		<parameter name="browser" value="firefox"/>
+   		<groups>
+      		<run>
+        		<include name="bvt"/>
+      		</run>
+    	</groups>
 		<classes>
 				<class name="com.poc.ui.test.AngularAppTests" />
 		</classes>
 	</test> <!-- Test -->
 	<test name="Ui test Chrome">
 		
-		<method-selectors>
-     		<method-selector>
-       			<script language="beanshell"><![CDATA[
-         			groups.containsKey(System.getProperty("testSuite"))
-       			]]></script>
-     		</method-selector>
-   		</method-selectors>
+		
    		<parameter name="browser" value="chrome"/>
+   		<groups>
+      		<run>
+        		<include name="bvt"/>
+     		</run>
+    	</groups>
 		<classes>
 				<class name="com.poc.ui.test.AngularAppTests" />
 		</classes>

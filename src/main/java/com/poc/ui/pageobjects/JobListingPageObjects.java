@@ -1,10 +1,5 @@
 package com.poc.ui.pageobjects;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
-import com.poc.utils.WebDriverTasks;
-
 
 
 public class JobListingPageObjects {
@@ -15,7 +10,7 @@ public class JobListingPageObjects {
 	public static String rowusername_locator = "//input[@ng-reflect-name='name'][@placeholder='Full Name']";
 	
 	
-	public static synchronized  WebElement getEditLink() {
+	/*public static synchronized  WebElement getEditLink() {
         
         return WebDriverTasks.getWebdriverSession().findElement(By.xpath(editlink_locator));
     }
@@ -33,6 +28,6 @@ public class JobListingPageObjects {
 	public static synchronized  WebElement getUpdateLink() {
     
 		return WebDriverTasks.getWebdriverSession().findElement(By.xpath(updatelink_locator));
-	}
+	}*/
 
 }
