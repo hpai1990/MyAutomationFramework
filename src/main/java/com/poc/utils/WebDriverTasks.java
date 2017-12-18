@@ -37,6 +37,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import com.paulhammant.ngwebdriver.NgWebDriver;
+
 //This class provides methods with logging for different object actions like click,send text etc
 public class WebDriverTasks {
 	
@@ -45,6 +47,8 @@ public class WebDriverTasks {
 	private static long defaultwait = 15;
 	private static long longwait = 120;
 	public static int maxretry = 10;
+	
+
 	//public static WebDriverWait wait;
 	
 	
@@ -52,15 +56,17 @@ public class WebDriverTasks {
 	@Step("Clicking on Web Element")
 	public static synchronized void clickObject(String object_locator){
 		try{
+			waitForAngular();
 			WebDriverWait wait = new WebDriverWait(WebDriverTasks.getWebdriverSession(),10);
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(object_locator)));
 			WebDriverTasks.getWebdriverSession().findElement(By.xpath(object_locator)).click();
 		}
 		catch(org.openqa.selenium.StaleElementReferenceException ex){
-			//wait.until(angularHasFinishedProcessing());
+			waitForAngular();
 			WebDriverWait wait = new WebDriverWait(WebDriverTasks.getWebdriverSession(),10);
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(object_locator)));
 			WebDriverTasks.getWebdriverSession().findElement(By.xpath(object_locator)).click();
+			System.out.println("Stale State Exception handled....");
 		
 		}
 		
@@ -71,12 +77,13 @@ public class WebDriverTasks {
 	public static synchronized void sendTextWithObject(String object_locator,String webtext){
 		
 		try{
+			waitForAngular();
 			WebDriverWait wait = new WebDriverWait(WebDriverTasks.getWebdriverSession(),10);
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(object_locator)));
 			WebDriverTasks.getWebdriverSession().findElement(By.xpath(object_locator)).sendKeys(webtext);
 		}
 		catch(org.openqa.selenium.StaleElementReferenceException ex){
-			//wait.until(angularHasFinishedProcessing());
+			waitForAngular();
 			WebDriverWait wait = new WebDriverWait(WebDriverTasks.getWebdriverSession(),10);
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(object_locator)));
 			WebDriverTasks.getWebdriverSession().findElement(By.xpath(object_locator)).sendKeys(webtext);
@@ -104,15 +111,17 @@ public class WebDriverTasks {
 	}
 	
 	
-	
-	/*public static synchronized void waitForElementToBeClickable(WebElement testelement){
-		wait = new WebDriverWait(WebDriverTasks.getWebdriverSession(),defaultwait);
+	public static synchronized void waitForAngular(){
+		NgWebDriver ngdriver;
+		JavascriptExecutor js;
 		
-
-		//wait.until(angularHasFinishedProcessing());
-		wait.until(ExpectedConditions.elementToBeClickable(testelement));
+		js = (JavascriptExecutor) getWebdriverSession();
+		getWebdriverSession().manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
+	    ngdriver = new NgWebDriver(js);
 		
-	}*/
+	    ngdriver.waitForAngularRequestsToFinish();
+		
+	}
 	
 	public static synchronized ExpectedCondition<Boolean> angularHasFinishedProcessing() {
         return new ExpectedCondition<Boolean>() {
