@@ -1,4 +1,4 @@
-package com.poc.api.metadata;
+/*package com.poc.api.metadata;
 
 
 import static io.restassured.RestAssured.given;
@@ -147,3 +147,4 @@ public class TopicApiTasks {
 		return apiResponse;
 	}
 }
+*/

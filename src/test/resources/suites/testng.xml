@@ -11,7 +11,7 @@
    		
 		<classes>
 			<class name="com.poc.api.test.TopicApiTests" />
-			<class name="com.poc.ui.test.AngularAppTests" />
+			
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

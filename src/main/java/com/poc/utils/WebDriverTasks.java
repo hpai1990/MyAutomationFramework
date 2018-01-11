@@ -62,7 +62,7 @@ public class WebDriverTasks {
 			WebDriverTasks.getWebdriverSession().findElement(By.xpath(object_locator)).click();
 		}
 		catch(org.openqa.selenium.StaleElementReferenceException ex){
-			waitForAngular();
+			//waitForAngular();
 			WebDriverWait wait = new WebDriverWait(WebDriverTasks.getWebdriverSession(),10);
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(object_locator)));
 			WebDriverTasks.getWebdriverSession().findElement(By.xpath(object_locator)).click();
@@ -83,7 +83,7 @@ public class WebDriverTasks {
 			WebDriverTasks.getWebdriverSession().findElement(By.xpath(object_locator)).sendKeys(webtext);
 		}
 		catch(org.openqa.selenium.StaleElementReferenceException ex){
-			waitForAngular();
+			//waitForAngular();
 			WebDriverWait wait = new WebDriverWait(WebDriverTasks.getWebdriverSession(),10);
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(object_locator)));
 			WebDriverTasks.getWebdriverSession().findElement(By.xpath(object_locator)).sendKeys(webtext);

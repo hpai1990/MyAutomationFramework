@@ -1,45 +1,54 @@
 package com.poc.api.metadata.beans;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+    "id",
+    "name",
+    "description"
+})
 public class TopicApiBeans {
-	
-	private String id;
-	private String name;
-	private String description;
-	
-	public void setTopicId(String id){
-		if(id == null || id.isEmpty())
-			this.id = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-		else
-			this.id = id;
-	}
-	
-	public String getTopicId(){
-		return id;
-	}
-	
-	public void setTopicName(String name){
-		if(name == null || name.isEmpty())
-			this.name = "Test Topic";
-		else
-			this.name = name;
-	}
-	
-	public String getTopicName(){
-		return name;
-	}
-	
-	public void setTopicDescription(String description){
-		if(description == null || description.isEmpty())
-			this.description = "Sample Test Topic";
-		else
-			this.description = description;
-	}
-	
-	public String getTopicDescription(){
-		return description;
-	}
+
+    @JsonProperty("id")
+    private String id;
+    
+    @JsonProperty("name")
+    private String name;
+    
+    @JsonProperty("description")
+    private String description;
+
+    @JsonProperty("id")
+    public String getId() {
+        return id;
+    }
+
+    @JsonProperty("id")
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @JsonProperty("name")
+    public String getName() {
+        return name;
+    }
+
+    @JsonProperty("name")
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @JsonProperty("description")
+    public String getDescription() {
+        return description;
+    }
+
+    @JsonProperty("description")
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
 }
